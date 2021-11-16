@@ -55,3 +55,4 @@ class LinearRegression(object):
     def evaluate(self, X, y_true):
         y_predict = self.infer(X)
         return self.mse(y_true, y_predict)
+
