@@ -48,11 +48,3 @@ class LinearRegression(object):
         X = np.insert(X, 0, 1, axis=1)
         return np.matmul(X, self.coef)
 
-    @staticmethod
-    def mse(y_true, y_predict):
-        return 0.5 * np.sum((y_true - y_predict)**2)
-
-    def evaluate(self, X, y_true):
-        y_predict = self.infer(X)
-        return self.mse(y_true, y_predict)
-

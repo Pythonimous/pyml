@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
 
-from classical.linear_model import LinearRegression
+from pyml.algorithms.linear_model import LinearRegression
+from pyml.metrics import mse
 
 seed = 42
 
@@ -14,7 +15,8 @@ def test_linear(train_dataset):
 
     data = train_dataset.dropna()
     X = np.array(data[['total_rooms', 'total_bedrooms', 'median_income']])
-    y = np.array(data['median_house_value']).reshape((X.shape[0],1))
+    y = np.array(data['median_house_value']).reshape((X.shape[0], 1))
+
     X_train, X_test = X[:20000, :], X[20000:, :]
     y_train, y_test = y[:20000, :], y[20000:, :]
 
@@ -24,7 +26,7 @@ def test_linear(train_dataset):
 
     predictions = linear_regression.infer(X_test)
 
-    print(linear_regression.evaluate(X_test, y_test))
+    print(mse(y_test, predictions))
 
     return predictions
 
