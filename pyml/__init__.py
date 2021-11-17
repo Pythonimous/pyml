@@ -1,3 +1,3 @@
 from .algorithms.linear_model import LinearRegression
-from .metrics import mse
+from .loss import lse, mse
 

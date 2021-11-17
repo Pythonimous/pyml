@@ -26,14 +26,16 @@ class LinearRegression(object):
             while batch_end < num_examples:
                 prev_coef = self.coef
                 self.step(X, y, batch_start, batch_end, alpha)
-                if prev_coef == self.coef: return
+                if prev_coef == self.coef:
+                    return
                 batch_start = batch_end
                 batch_end += batch_size
 
             batch_end = num_examples
             prev_coef = self.coef
             self.step(X, y, batch_start, batch_end, alpha)
-            if prev_coef == self.coef: return
+            if prev_coef == self.coef:
+                return
 
     def normal_equations(self, X, y):
         inverted = np.linalg.inv(np.matmul( X.T, X ))

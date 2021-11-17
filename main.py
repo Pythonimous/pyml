@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 
 from pyml.algorithms.linear_model import LinearRegression
-from pyml.metrics import mse
 
 seed = 42
 
@@ -26,10 +25,10 @@ def test_linear(train_dataset):
 
     predictions = linear_regression.infer(X_test)
 
-    print(mse(y_test, predictions))
+    pred_pairs = zip(y_test[:5], predictions[:5])
 
-    return predictions
-
+    print("First five of actual - predicted pairs:\n")
+    for pair in pred_pairs:
+        print(pair)
 
 test_linear(dataset)
-
